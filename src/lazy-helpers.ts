@@ -32,6 +32,13 @@ export class DelayedConstructor<T> {
   }
 
   private createHandler(delayedObject: () => T): ProxyHandler<object> {
+
+    if (typeof Reflect === "undefined" || !Reflect.getMetadata) {
+      throw new Error(
+        `tsyringe requires a reflect polyfill. Please add 'import "reflect-metadata"' to the top of your entry point.`
+      );
+    }
+
     const handler: ProxyHandler<object> = {};
     const install = (name: keyof ProxyHandler<any>): void => {
       handler[name] = (...args: any[]) => {
