@@ -7,7 +7,6 @@ import Transform from "./types/transform";
 export const INJECTION_TOKEN_METADATA_KEY = "injectionTokens";
 
 export function getParamInfo(target: constructor<any>): ParamInfo[] {
-
   if (typeof Reflect === "undefined" || !Reflect.getMetadata) {
     throw new Error(
       `tsyringe requires a reflect polyfill. Please add 'import "reflect-metadata"' to the top of your entry point.`
@@ -37,7 +36,6 @@ export function defineInjectionTokenMetadata(
     _propertyKey: string | symbol | undefined,
     parameterIndex: number
   ): any {
-
     if (typeof Reflect === "undefined" || !Reflect.getMetadata) {
       throw new Error(
         `tsyringe requires a reflect polyfill. Please add 'import "reflect-metadata"' to the top of your entry point.`
